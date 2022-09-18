@@ -60,25 +60,36 @@ void free_board(int **grid, unint rows)
     free(grid);
 }
 
-int** init_board(int **grid, unint rows, unint cols)
+int** init_board(unint rows, unint cols)
 {
-    grid = malloc(sizeof(int *) * rows);
+    int **grid = malloc(sizeof(int *) * rows);
     for (unint i = 0; i < cols; i++)
         grid[i] = calloc(cols, sizeof(int));
     return grid;
 }
-/*
-void init_board_preloaded(int **grid, char* path)
+
+int** init_board_preloaded(char* path)
 {
+    int fd = open(path, O_RDONLY);
+    if (fd == -1)
+        errx(1, "open file failed\n");
     
-    FILE *file = fopen(path, "r");
-    if (file == NULL)
-        errx(1, "init_board_preloaded : wrong path file\n");
+    // create grid
+    int **grid = malloc(sizeof(int *) * SIZE);
 
-    grid = malloc(sizeof(int *) * SIZE);
     for (unint i = 0; i < SIZE; i++)
-        while(fgets(line, SIZE 
-
-    fclose(file);
-    
-}*/
+    {
+        char line;
+        grid[i] = calloc(SIZE, sizeof(int));
+        unint j = 0;
+        
+        while(read(fd, &line, 1) > 0 && j < SIZE)
+        {
+            grid[i][j] = line-'0';
+            j++;
+        }
+    }
+}
+   close(fd);
+   return grid;
+}
