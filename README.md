@@ -1,3 +1,3 @@
 # Game-of-Life
 
-Eric's branch
+main branch
