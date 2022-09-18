@@ -20,7 +20,7 @@ void game(int** grid,int **grid2, unint rows, unint cols)
             {
                 for (unint j = 0; j < cols; j++)
                 {
-                    if (next_state(grid, i, j))
+                    if (next_state(grid, i, j, rows, cols))
                     {
                         grid2[i][j] = 1;
                         draw_rect(renderer, j, i, 1);
@@ -41,7 +41,7 @@ void game(int** grid,int **grid2, unint rows, unint cols)
             {
                 for (unint j = 0; j < cols; j++)
                 {
-                    if (next_state(grid2, i, j))
+                    if (next_state(grid2, i, j, rows, cols))
                     {
                         grid[i][j] = 1;
                         draw_rect(renderer, j, i, 1);
