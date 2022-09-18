@@ -41,14 +41,14 @@ void print_board(int **grid, unint rows, unint cols)
     printf("\n");
 }
 
-void free_board(int **grid, unint rows, unint cols)
+void free_board(int **grid, unint rows)
 {
     for (unint i = 0; i < rows; i++)
         free(grid[i]);
     free(grid);
 }
 
-void init_board(int **grid, uint rows, unint cols)
+void init_board(int **grid, unint rows, unint cols)
 {
     grid = malloc(sizeof(int *) * rows);
     for (unint i = 0; i < rows; i++)

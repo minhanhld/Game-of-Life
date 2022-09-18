@@ -10,7 +10,7 @@
 // functions
 void fill_grid(int **grid, unint row, unint col);
 void print_board(int **grid, unint rows, unint cols);
-void free_board(int **grid, unint rows, unint cols);
+void free_board(int **grid, unint rows);
 void init_board(int **grid, unint rows, unint cols);
 
 #endif
