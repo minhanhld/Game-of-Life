@@ -1,6 +1,9 @@
 #ifndef IS_ALIVE_
 #define IS_ALIVE_
 
+// define
+#define SIZE_BIS 49
+
 // includes
 #include <stdlib.h>
 #include <stdio.h>
