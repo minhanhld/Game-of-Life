@@ -32,12 +32,12 @@ void	draw_rect(SDL_Renderer *r, int x, int y, int color)
 	rect->h = 10;
 	rect->x = 10 * x;
 	rect->y = 10 * y;
-	if (color)
+	if (color == 1)
 		SDL_SetRenderDrawColor(r, 255, 255, 255, 1);
-	else
+	else if (color == 0)
 		SDL_SetRenderDrawColor(r, 0, 0, 0, 1);
 	SDL_RenderFillRect(r, rect);
 	SDL_RenderPresent(r);
-	SDL_RenderClear(r);
+	//SDL_RenderClear(r);
 	free(rect);
 }

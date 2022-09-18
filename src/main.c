@@ -10,7 +10,6 @@ void game(int** grid, unint rows, unint cols)
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	init_state(renderer, grid, rows, cols);
     unint still_alive = 1;
-    // infinite loop to launch the game
     while(still_alive)
     {
         still_alive = 0;
@@ -20,16 +19,22 @@ void game(int** grid, unint rows, unint cols)
             {
                 if (next_state(grid, i, j))
                 {
+					grid[i][j] = 1;
                     draw_rect(renderer, j, i, 1);
                     still_alive++;
                 }
                 else
+				{
+					grid[i][j] = 0;
                     draw_rect(renderer, j, i, 0);
+				}
             }
         }
         sleep(1);
     }
-
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
     printf("======== NO MORE CELLS ALIVE ========\n");
 }
 
