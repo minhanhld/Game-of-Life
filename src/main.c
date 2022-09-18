@@ -27,8 +27,6 @@ void game(int** grid, unint rows, unint cols)
     }
 
     printf("======== NO MORE CELLS ALIVE ========\n");
- 
- 
 }
 
 int main(int argc, char *argv[])
@@ -38,11 +36,9 @@ int main(int argc, char *argv[])
         // init the grid
         unint rows = atoi(argv[1]);
         unint cols = atoi(argv[2]);
-
-        int **grid = malloc(sizeof(int*) * rows);
-        for (unint i = 0; i < cols; i++)
-            grid[i] = calloc(cols, sizeof(int));
-        
+        int **grid;
+        init_board(grid);
+                
         // fill the grid at random position
         fill_grid(grid, rows, cols);
 
@@ -50,9 +46,12 @@ int main(int argc, char *argv[])
         game(grid, rows, cols);
 
         // end of game
-        for (unint i = 0; i < rows; i++)
-            free(grid[i]);
-        free(grid);
+        free_board(grid, rows, cols); 
+    }
+    else if (argc == 2)
+    {
+        int **grid;
+        init_board_preloaded(grid, argv[1]);
     }
     else
         errx(1, "error : number of argument different from 2\n");

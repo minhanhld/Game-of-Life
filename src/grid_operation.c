@@ -40,3 +40,30 @@ void print_board(int **grid, unint rows, unint cols)
         printf("=");
     printf("\n");
 }
+
+void free_board(int **grid, unint rows, unint cols)
+{
+    for (unint i = 0; i < rows; i++)
+        free(grid[i]);
+    free(grid);
+}
+
+void init_board(int **grid, uint rows, unint cols)
+{
+    grid = malloc(sizeof(int *) * rows);
+    for (unint i = 0; i < rows; i++)
+        grid[i] = calloc(cols, sizeof(int));
+}
+
+void init_board_preloaded(int **grid, char* path)
+{
+    FILE *file = fopen(path, "r");
+    if (file == NULL)
+        errx(1, "init_board_preloaded : wrong path file\n");
+
+    grid = malloc(sizeof(int *) * SIZE);
+    for (unint i = 0; i < SIZE; i++)
+        while(fgets(line, SIZE 
+
+    fclose(file);
+}
