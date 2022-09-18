@@ -4,19 +4,10 @@ void fill_grid(int **grid, unint rows, unint cols)
 {
     srand(time(NULL));
 
-    unint number_lives = (rows+cols)*5;
-    for (unint i = 0; i < number_lives; i++)
+    for (unint i = 0; i < rows; i++)
     {
-        int rand_a, rand_b;
-        // fill grid at random position
-        while(1)
-        {
-            rand_a = rand()%rows;
-            rand_b = rand()%cols;
-            if (!grid[rand_a][rand_b])
-                break;
-        }
-        grid[rand_a][rand_b] = 1;
+       for (unint j = 0; j < cols; j++)
+            grid[i][j] = rand()%2;
     }
 }
 
@@ -92,4 +83,14 @@ int** init_board_preloaded(char* path)
     }
     close(fd);
     return grid;
+}
+
+void print_new_grid(unint temp)
+{
+    for (unint i = 0; i < temp; i++)
+    {
+        for (unint j = 0; j < temp; j++)
+            printf("%d", rand()%2);
+        printf("\n");
+    }
 }

@@ -33,7 +33,7 @@ void game(int** grid,int **grid2, unint rows, unint cols)
                     }
                 }
             }
-			SDL_RenderPresent(renderer);
+            SDL_RenderPresent(renderer);
         }
         else
         {
@@ -54,9 +54,9 @@ void game(int** grid,int **grid2, unint rows, unint cols)
                     }
                 }
             }
-			SDL_RenderPresent(renderer);
+            SDL_RenderPresent(renderer);
         }
-		SDL_Delay(750);
+        SDL_Delay(50);
         state = !state;
     }
     SDL_DestroyRenderer(renderer);
@@ -68,24 +68,33 @@ void game(int** grid,int **grid2, unint rows, unint cols)
 int main(int argc, char *argv[])
 {
     if (argc == 3)
-    {
-        // init the grid
-        unint rows = atoi(argv[1]);
-        unint cols = atoi(argv[2]);
-        int **grid2 = init_board(rows, cols);
-        int **grid = init_board(rows,cols);
+    { 
+        if (strcmp(argv[1], "-t") == 0)
+        {
+            unint temp = atoi(argv[2]);
+            print_new_grid(temp);
+        }
+        else
+        {
+            // init the grid
+            unint rows = atoi(argv[1]);
+            unint cols = atoi(argv[2]);
+            int **grid2 = init_board(rows, cols);
+            int **grid = init_board(rows,cols);
 
-        // fill the grid at random position
-        fill_grid(grid,rows, cols);
+            // fill the grid at random position
+            fill_grid(grid,rows, cols);
 
-        // launch game
-        game(grid, grid2, rows, cols);
+            // launch game
+            game(grid, grid2, rows, cols);
 
-        // end of game
-        free_board(grid, rows); 
+            // end of game
+            free_board(grid, rows); 
+        }
     }
     else if (argc == 2)
     {
+
         // init grid from a file
         int **grid = init_board_preloaded(argv[1]);
         int **grid2 = init_board_preloaded(argv[1]);
