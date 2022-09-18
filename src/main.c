@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         unint rows = atoi(argv[1]);
         unint cols = atoi(argv[2]);
         int **grid = NULL;
-        init_board(grid,rows,cols);
+        grid = init_board(grid,rows,cols);
                 
         // fill the grid at random position
         fill_grid(grid, rows, cols);

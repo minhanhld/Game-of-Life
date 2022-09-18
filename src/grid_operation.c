@@ -48,11 +48,12 @@ void free_board(int **grid, unint rows)
     free(grid);
 }
 
-void init_board(int **grid, unint rows, unint cols)
+int** init_board(int **grid, unint rows, unint cols)
 {
     grid = malloc(sizeof(int *) * rows);
-    for (unint i = 0; i < rows; i++)
+    for (unint i = 0; i < cols; i++)
         grid[i] = calloc(cols, sizeof(int));
+    return grid;
 }
 
 void init_board_preloaded(int **grid, char* path)
