@@ -11,22 +11,22 @@ int neighbors_around(int **grid, unint row, unint col, unint rows, unint cols)
     if ((int)(row-1) >= 0 && (int)(col) >= 0)
         alive_around += grid[row-1][col] == 1;
 
-    if ((int)(row-1) >= 0 && col+1 <= cols)
+    if ((int)(row-1) >= 0 && col+1 < cols)
         alive_around += grid[row-1][col+1] == 1;
 
     if ((int)(row) >= 0 && (int)(col-1) >= 0)
         alive_around += grid[row][col-1] == 1;
 
-    if ((int)(row) >= 0 && col+1 <= cols)
+    if ((int)(row) >= 0 && col+1 < cols)
         alive_around += grid[row][col+1] == 1;
 
-    if (row+1 <= rows && (int)(col-1) >= 0)
+    if (row+1 < rows && (int)(col-1) >= 0)
         alive_around += grid[row+1][col-1] == 1;
 
-    if (row+1 <= rows && (int)(col) >= 0)
+    if (row+1 < rows && (int)(col) >= 0)
         alive_around += grid[row+1][col] == 1;
 
-    if (row+1 <= rows && col+1 <= cols)
+    if (row+1 < rows && col+1 < cols)
         alive_around += grid[row+1][col+1] == 1;
 
     return alive_around;
