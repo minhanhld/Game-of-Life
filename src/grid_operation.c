@@ -89,7 +89,6 @@ int** init_board_preloaded(char* path)
             j++;
         }
     }
-}
-   close(fd);
-   return grid;
+    close(fd);
+    return grid;
 }
