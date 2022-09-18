@@ -33,6 +33,7 @@ void game(int** grid,int **grid2, unint rows, unint cols)
                     }
                 }
             }
+			SDL_RenderPresent(renderer);
         }
         else
         {
@@ -53,10 +54,10 @@ void game(int** grid,int **grid2, unint rows, unint cols)
                     }
                 }
             }
-
+			SDL_RenderPresent(renderer);
         }
+		SDL_Delay(750);
         state = !state;
-        sleep(2);
     }
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

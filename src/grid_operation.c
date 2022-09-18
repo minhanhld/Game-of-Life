@@ -51,6 +51,7 @@ void	init_state(SDL_Renderer *r, int **grid, unint rows, unint cols)
 				draw_rect(r, j, i, 1);
 		}
 	}
+	SDL_RenderPresent(r);
 }
 
 void free_board(int **grid, unint rows)

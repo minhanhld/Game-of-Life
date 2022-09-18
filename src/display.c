@@ -37,7 +37,6 @@ void	draw_rect(SDL_Renderer *r, int x, int y, int color)
 	else if (color == 0)
 		SDL_SetRenderDrawColor(r, 0, 0, 0, 1);
 	SDL_RenderFillRect(r, rect);
-	SDL_RenderPresent(r);
 	//SDL_RenderClear(r);
 	free(rect);
 }
