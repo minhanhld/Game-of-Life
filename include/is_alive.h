@@ -7,6 +7,7 @@
 #include <err.h>
 #include <time.h>
 #include <unistd.h>
+#include <SDL2/SDL.h>
 
 // struct, typedef, enum etc
 typedef size_t unint;

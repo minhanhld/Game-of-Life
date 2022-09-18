@@ -3,24 +3,28 @@
 
 void game(int** grid, unint rows, unint cols)
 {
-    unint still_alive = 1;
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
 
+	window = create_window();
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	init_state(renderer, grid, rows, cols);
+    unint still_alive = 1;
     // infinite loop to launch the game
     while(still_alive)
     {
         still_alive = 0;
-        print_board(grid, rows, cols);
         for (unint i = 0; i < rows; i++)
         {
             for (unint j = 0; j < cols; j++)
             {
                 if (next_state(grid, i, j))
                 {
-                    grid[i][j] = 1;
+                    draw_rect(renderer, j, i, 1);
                     still_alive++;
                 }
                 else
-                    grid[i][j] = 0;
+                    draw_rect(renderer, j, i, 0);
             }
         }
         sleep(1);

@@ -41,6 +41,18 @@ void print_board(int **grid, unint rows, unint cols)
     printf("\n");
 }
 
+void	init_state(SDL_Renderer *r, int **grid, unint rows, unint cols)
+{
+	for (unint i = 0; i < rows; i++)
+	{
+		for (unint j = 0; j < cols; j++)
+		{
+			if (grid[i][j] == 1)
+				draw_rect(r, j, i, 1);
+		}
+	}
+}
+
 void free_board(int **grid, unint rows)
 {
     for (unint i = 0; i < rows; i++)
@@ -55,10 +67,10 @@ int** init_board(int **grid, unint rows, unint cols)
         grid[i] = calloc(cols, sizeof(int));
     return grid;
 }
-
+/*
 void init_board_preloaded(int **grid, char* path)
 {
-    /*
+    
     FILE *file = fopen(path, "r");
     if (file == NULL)
         errx(1, "init_board_preloaded : wrong path file\n");
@@ -68,5 +80,5 @@ void init_board_preloaded(int **grid, char* path)
         while(fgets(line, SIZE 
 
     fclose(file);
-    */
-}
+    
+}*/
