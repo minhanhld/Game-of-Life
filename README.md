@@ -1,3 +1,3 @@
 # Game-of-Life
 
-Minh Anh's branch
+main branch
