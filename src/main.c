@@ -1,23 +1,34 @@
 #include "is_alive.h"
-#include "fill_grid.h"
+#include "grid_operation.h"
 
 void game(int** grid, unint rows, unint cols)
 {
+    unint still_alive = 1;
+
     // infinite loop to launch the game
-    while(1)
+    while(still_alive)
     {
+        still_alive = 0;
+        print_board(grid, rows, cols);
         for (unint i = 0; i < rows; i++)
         {
             for (unint j = 0; j < cols; j++)
             {
-                if (is_alive(grid, i, j))
+                if (next_state(grid, i, j))
+                {
                     grid[i][j] = 1;
+                    still_alive++;
+                }
                 else
                     grid[i][j] = 0;
             }
         }
         sleep(1);
     }
+
+    printf("======== NO MORE CELLS ALIVE ========\n");
+ 
+ 
 }
 
 int main(int argc, char *argv[])
@@ -28,15 +39,20 @@ int main(int argc, char *argv[])
         unint rows = atoi(argv[1]);
         unint cols = atoi(argv[2]);
 
-        unint **grid = malloc(sizeof(size_t*) * rows);
+        int **grid = malloc(sizeof(int*) * rows);
         for (unint i = 0; i < cols; i++)
-            grid[i] = calloc(sizeof(size_t) * cols);
+            grid[i] = calloc(cols, sizeof(int));
         
         // fill the grid at random position
         fill_grid(grid, rows, cols);
 
         // launch game
         game(grid, rows, cols);
+
+        // end of game
+        for (unint i = 0; i < rows; i++)
+            free(grid[i]);
+        free(grid);
     }
     else
         errx(1, "error : number of argument different from 2\n");

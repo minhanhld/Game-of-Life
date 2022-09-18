@@ -4,14 +4,14 @@
 // includes
 #include <stdlib.h>
 #include <stdio.h>
-#include <errno.h>
-#include <SDL.H>
+#include <err.h>
+#include <time.h>
+#include <unistd.h>
 
 // struct, typedef, enum etc
 typedef size_t unint;
 
 // functions
-int is_alive(int **grid, int row, int col);
-int is_dead(int **grid, int row, int col);
+int next_state(int **grid, unint row, unint col);
 
 #endif
