@@ -5,12 +5,14 @@ void game(int** grid,int **grid2, unint rows, unint cols)
 {
     SDL_Window		*window;
     SDL_Renderer	*renderer;
+	int				state;
+	unint			still_alive;
 
     window = create_window();
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    init_state(renderer, grid, rows, cols);
-    unint still_alive = 1;
-    int state = 1;
+    still_alive = 1;
+    state = 1;
+	init_state(renderer, grid, rows, cols);
     while(still_alive)
     {
         still_alive = 0;
@@ -68,7 +70,7 @@ void game(int** grid,int **grid2, unint rows, unint cols)
 int main(int argc, char *argv[])
 {
     if (argc == 3)
-    { 
+    {
         if (strcmp(argv[1], "-t") == 0)
         {
             unint temp = atoi(argv[2]);

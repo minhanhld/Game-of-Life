@@ -1,6 +1,3 @@
-#include <SDL2/SDL.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "grid_operation.h"
 
 int	init_SDL(void)
@@ -28,15 +25,14 @@ void	draw_rect(SDL_Renderer *r, int x, int y, int color)
 	rect = malloc(sizeof(SDL_Rect));
 	if (!rect)
 		return ;
-	rect->w = 10;
-	rect->h = 10;
-	rect->x = 10 * x;
-	rect->y = 10 * y;
+	rect->w = 1;
+	rect->h = 1;
+	rect->x = 1 * x;
+	rect->y = 1 * y;
 	if (color == 1)
 		SDL_SetRenderDrawColor(r, 255, 255, 255, 1);
 	else if (color == 0)
 		SDL_SetRenderDrawColor(r, 0, 0, 0, 1);
 	SDL_RenderFillRect(r, rect);
-	//SDL_RenderClear(r);
 	free(rect);
 }
