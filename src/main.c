@@ -37,10 +37,10 @@ int main(int argc, char *argv[])
         unint rows = atoi(argv[1]);
         unint cols = atoi(argv[2]);
         int **grid = NULL;
-        grid = init_board(grid,rows,cols);
+        grid = init_board(rows,cols);
                 
         // fill the grid at random position
-        fill_grid(grid, rows, cols);
+        fill_grid(grid,rows, cols);
 
         // launch game
         game(grid, rows, cols);
@@ -48,12 +48,20 @@ int main(int argc, char *argv[])
         // end of game
         free_board(grid, rows); 
     }
-    /*else if (argc == 2)
+    else if (argc == 2)
     {
-        int **grid;
-        init_board_preloaded(grid, argv[1]);
-    }*/
+        // init grid from a file
+        int **grid = NULL;
+        grid = init_board_preloaded(argv[1]);
+
+        // launch game
+        game(grid, SIZE, SIZE);
+
+        // end of game
+        free_board(grid, SIZE);
+    }
     else
         errx(1, "error : number of argument different from 2\n");
+
     return 0;
 }
