@@ -7,7 +7,10 @@ RM =		rm -f
 SRCS =		$(addprefix src/,	grid_operation.c \
 								display.c \
 								is_alive.c \
-								main.c)
+								main.c \
+								init.c \
+								game.c \
+								SDL.c)
 
 OBJS =		${SRCS:.c=.o}
 

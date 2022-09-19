@@ -1,4 +1,4 @@
-#include "grid_operation.h"
+#include "gameoflife.h"
 
 void fill_grid(int **grid, unint rows, unint cols)
 {
@@ -11,55 +11,11 @@ void fill_grid(int **grid, unint rows, unint cols)
     }
 }
 
-void	init_state(SDL_Renderer *r, int **grid, unint rows, unint cols)
-{
-	for (unint i = 0; i < rows; i++)
-	{
-		for (unint j = 0; j < cols; j++)
-		{
-			if (grid[i][j] == 1)
-				draw_rect(r, j, i, 1);
-		}
-	}
-	SDL_RenderPresent(r);
-}
-
-void free_board(int **grid, unint rows)
+void free_grid(int **grid, unint rows)
 {
     for (unint i = 0; i < rows; i++)
         free(grid[i]);
     free(grid);
-}
-
-int** init_board(unint rows, unint cols)
-{
-    int **grid = malloc(sizeof(int *) * rows);
-    for (unint i = 0; i < rows; i++)
-        grid[i] = calloc(cols, sizeof(int));
-    return grid;
-}
-
-int** init_board_preloaded(char* path)
-{
-    int fd = open(path, O_RDONLY);
-    if (fd == -1)
-        errx(1, "open file failed\n");
-    // create grid
-    int **grid = malloc(sizeof(int *) * SIZE);
-
-    for (unint i = 0; i < SIZE; i++)
-    {
-        char line;
-        grid[i] = calloc(SIZE, sizeof(int));
-        unint j = 0;
-        while(read(fd, &line, 1) > 0 && j < SIZE)
-        {
-            grid[i][j] = line-'0';
-            j++;
-        }
-    }
-    close(fd);
-    return grid;
 }
 
 void print_new_grid(unint temp)

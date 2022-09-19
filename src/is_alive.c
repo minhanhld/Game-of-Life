@@ -1,4 +1,4 @@
-#include "is_alive.h"
+#include "gameoflife.h"
 
 /*Checking for neighbors around one cell in 1st ft
 //Then checking according to the rules of the game
