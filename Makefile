@@ -10,7 +10,8 @@ SRCS =		$(addprefix src/,	grid_operation.c \
 								main.c \
 								init.c \
 								game.c \
-								SDL.c)
+								SDL.c \
+								checks.c)
 
 OBJS =		${SRCS:.c=.o}
 

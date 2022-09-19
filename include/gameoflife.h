@@ -32,5 +32,6 @@ void		check_then_render(int **grid, int **grid2, unint r, unint c, SDL_Renderer 
 void		launch(int **grid, int **grid2, unint rows, unint cols, int opt);
 void		game(unint rows, unint cols, int opt);
 void		clean(SDL_Window *w, SDL_Renderer *r);
+int			check_args(int argc, char *argv[]);
 
 #endif
